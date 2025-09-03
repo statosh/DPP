@@ -1,44 +1,44 @@
 import turtle
 import random
 
-sc = None
-t1 = None
-t2 = None
-win = False
+sc = None  # Переменная для хранения объекта экрана
+t1 = None  # Переменная для первой черепашки
+t2 = None  # Переменная для второй черепашки
+win = False  # Флаг победы
 
 def setup():
     global sc, t1, t2 
-    sc = turtle.Screen()
-    sc.setup(500, 500)
-    t1 = turtle.Turtle()
-    t2 = turtle.Turtle()
-    t1.color("red")
-    t2.color("green")
-    t1.shape("turtle")
-    t2.shape("turtle")
-    t1.penup()
-    t2.penup()
-    t1.goto(-150, 50)
-    t2.goto(-150, -50)
+    sc = turtle.Screen()  # Создание окна для черепашек
+    sc.setup(500, 500)  # Установка размеров окна
+    t1 = turtle.Turtle()  # Создание первой черепашки
+    t2 = turtle.Turtle()  # Создание второй черепашки
+    t1.color("red")  # Установка цвета первой черепашки
+    t2.color("green")  # Установка цвета второй черепашки
+    t1.shape("turtle")  # Установка формы первой черепашки
+    t2.shape("turtle")  # Установка формы второй черепашки
+    t1.penup()  # Поднятие пера первой черепашки (чтобы не рисовать линии)
+    t2.penup()  # Поднятие пера второй черепашки
+    t1.goto(-150, 50)  # Позиционирование первой черепашки
+    t2.goto(-150, -50)  # Позиционирование второй черепашки
 
 def start_race():
     global win
-    for i in range(100):
-        if not win:
-            t1.forward(random.randint(1, 5))
-            t2.forward(random.randint(1, 5))
-            check_winner()
+    for i in range(100):  # Ограничение на количество шагов
+        if not win:  # Если еще нет победителя
+            t1.forward(random.randint(1, 5))  # Движение первой черепашки на случайное расстояние
+            t2.forward(random.randint(1, 5))  # Движение второй черепашки на случайное расстояние
+            check_winner()  # Проверка на победу
         else:
-            break
+            break  # Завершение цикла при наличии победителя
 
 def check_winner():
     global win
-    if t1.xcor() > 150:
-        print("t1 won")
-        win = True
-    if t2.xcor() > 150:
-        print("t2 won")
-        win = True
+    if t1.xcor() > 150:  # Если первая черепашка достигла правой границы
+        print("t1 won")  # Объявление о победе первой черепашки
+        win = True  # Установка флага победы
+    if t2.xcor() > 150:  # Если вторая черепашка достигла правой границы
+        print("t2 won")  # Объявление о победе второй черепашки
+        win = True  # Установка флага победы
 
-setup()
-start_race()
+setup()  # Инициализация игры
+start_race()  # Начало гонки
