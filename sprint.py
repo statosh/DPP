@@ -1,5 +1,4 @@
-import turtle
-import random
+import turtle, random
 
 sc = None
 t1 = None
